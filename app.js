@@ -10,7 +10,16 @@ const p3 = p[2]
 const apikey = "&appid=6511e14723ad8cb6f243ece1366c5deb"
 const baseURL = "https://api.openweathermap.org/data/2.5/weather?q="
 
-function fetchWeather(city_name = "London") {
+buttonShow.addEventListener("click", () => {
+    const userInput = input.value.trim();
+    if (userInput !== "") {
+        fetchWeather(userInput);
+    } else {
+        alert("Пожалуйста, введите название города");
+    }
+});
+
+function fetchWeather(city_name = "Bishkek") {
     fetch(baseURL + city_name + apikey)
     .then(res => res.json())
     .then(data => {
